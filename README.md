@@ -1,4 +1,4 @@
-# **Exercice 1 : Back-end d'une Plateforme d'Analyse E-sportive**
+# **Back-end d'une Plateforme d'Analyse E-sportive**
 
 ## **Pitch du projet
 
@@ -120,17 +120,10 @@ Maintenant, ajoutez des méthodes à la classe `Plateforme` pour permettre l'ana
 
 -----
 
-### **6. Pour aller plus loin (Bonus)**
+### **Aller plus loin **
 
 Si vous avez terminé et que vous souhaitez aller plus loin, essayez d'implémenter ces fonctionnalités :
 <!-- cette partie constituera un bonus et vous offrira des points bonus ;) -->
 
 * **Ajoutez une méthode `simulerResultat(idMatch)`** à la `Plateforme`. Elle trouve le match, utilise `Math.random()` et les probabilités pour désigner un vainqueur, puis change le statut du match en "Terminé" en y ajoutant une propriété `resultat` avec le nom du gagnant.
 * **Ajoutez une méthode `getStatsEquipe(nomEquipe)`**. Elle doit retourner un objet contenant le nombre de matchs joués par l'équipe et son taux de victoire (basé sur les matchs simulés).
-
------
-
-### **7. ATTENTION ! TOUTE TRICHE SERA SÉVÉREMENT PUNIE !**
-
-Les personnes rendant le même code se partageront simplement la note. Un 10/20 deviendra un 5/20 pour les deux, ou un 3/20 pour les trois personnes ayant essayé de tricher !
-Ça n'a aucun intérêt, ni pour vous, ni pour moi !

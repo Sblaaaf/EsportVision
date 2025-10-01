@@ -113,7 +113,7 @@ return this.matchs.find(match => match.id === id);
 } 
 }
 
-/* ETAPE 4 */
+/* ETAPE 4 -- TEST */
 
 console.log("ESPORT VISION");
 // Instance de la plateforme
