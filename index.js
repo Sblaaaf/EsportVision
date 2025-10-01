@@ -34,6 +34,15 @@ const calendrierMatchs = [
     equipeB: 'Mandatory',
     probabiliteA: 0.52,
     statut: 'À venir'
+  },
+  {
+    id: 'GTA_A_B',
+    jeu: 'GTA 6',
+    competition: 'GTA',
+    equipeA: 'A',
+    equipeB: 'B',
+    probabiliteA: 0.72, // 72% de chance pour A
+    statut: 'À venir'
   }
 ];
 
@@ -111,6 +120,28 @@ getMatchById(id) {
 // find() retourne le 1er ID
 return this.matchs.find(match => match.id === id);
 } 
+
+
+/* ALLER PLUIS LOIN */
+
+simulerResultat(idMatch) {
+  const match = this.getMatchById(idMatch);
+  // Nombre aléatoire entre 0 et 1
+  const resultat = Math.random();
+
+  let vainqueur;
+  if (resultat < match.probabiliteA) {
+    vainqueur = match.equipeA;
+    vainqueur = match.equipeB; // Sinon B
+  }
+
+  // Afficher résultat
+  match.statut = 'Terminé';
+  match.resultat = vainqueur;
+  console.log(`- ${match.equipeA} vs ${match.equipeB} :`);
+  console.log(`> ${vainqueur} gagne !`);
+}
+
 }
 
 /* ETAPE 4 -- TEST */
@@ -152,8 +183,8 @@ if (matchsRisques.length > 0) {
 }
 
 // getMatchById
-console.log("\nRecherche 'VCT_VIT_M8':");
-const matchRecherche = esportVision.getMatchById("VCT_VIT_M8");
+console.log("\nRecherche 'GTA_A_B':");
+const matchRecherche = esportVision.getMatchById("GTA_A_B");
 if (matchRecherche) {
   console.log(`${matchRecherche.equipeA} vs ${matchRecherche.equipeB}, ${matchRecherche.jeu}`);
   console.log(`${matchRecherche.competition}`);
@@ -161,3 +192,11 @@ if (matchRecherche) {
 } else {
   console.log("Introuvable !");
 }
+
+console.log("\n______");
+
+// Simulation
+console.log("\nSimulation de matchs:");
+esportVision.simulerResultat("LFL_KC_SLY");
+esportVision.simulerResultat("VCT_VIT_M8");
+esportVision.simulerResultat("GTA_A_B");
