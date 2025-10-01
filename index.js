@@ -41,7 +41,16 @@ const calendrierMatchs = [
     competition: 'GTA',
     equipeA: 'A',
     equipeB: 'B',
-    probabiliteA: 0.72, // 72% de chance pour A
+    probabiliteA: 0.72,
+    statut: 'Terminé'
+  },
+   {
+    id: 'GTA_Ali_Bob',
+    jeu: 'GTA 6',
+    competition: 'GTA',
+    equipeA: 'Team Ali',
+    equipeB: 'Bobby Team',
+    probabiliteA: 0.51,
     statut: 'À venir'
   }
 ];
@@ -126,12 +135,19 @@ return this.matchs.find(match => match.id === id);
 
 simulerResultat(idMatch) {
   const match = this.getMatchById(idMatch);
+
+  if (match.statut === 'Terminé') {
+    console.log(`!! ${match.equipeA} vs ${match.equipeB} : Match terminé !!`);
+    return;
+  }
+
   // Nombre aléatoire entre 0 et 1
   const resultat = Math.random();
 
   let vainqueur;
   if (resultat < match.probabiliteA) {
     vainqueur = match.equipeA;
+  } else {
     vainqueur = match.equipeB; // Sinon B
   }
 
@@ -163,10 +179,17 @@ matchsLoL.forEach(match => {
   console.log(`- ${match.equipeA} vs ${match.equipeB} (+ ${match.getFavori()})`);
 });
 
-// Valorant
+// ..Valorant
 console.log("\nValorant:");
 const matchsValorant = esportVision.getMatchsParJeu("Valorant");
 matchsValorant.forEach(match => {
+  console.log(`- ${match.equipeA} vs ${match.equipeB} (+ ${match.getFavori()})`);
+});
+
+// ..GTA 6
+console.log("\nGTA:");
+const matchsGTA = esportVision.getMatchsParJeu("GTA 6");
+matchsGTA.forEach(match => {
   console.log(`- ${match.equipeA} vs ${match.equipeB} (+ ${match.getFavori()})`);
 });
 
@@ -183,8 +206,8 @@ if (matchsRisques.length > 0) {
 }
 
 // getMatchById
-console.log("\nRecherche 'GTA_A_B':");
-const matchRecherche = esportVision.getMatchById("GTA_A_B");
+console.log("\nRecherche 'GTA_Ali_Bob':");
+const matchRecherche = esportVision.getMatchById("GTA_Ali_Bob");
 if (matchRecherche) {
   console.log(`${matchRecherche.equipeA} vs ${matchRecherche.equipeB}, ${matchRecherche.jeu}`);
   console.log(`${matchRecherche.competition}`);
@@ -200,3 +223,4 @@ console.log("\nSimulation de matchs:");
 esportVision.simulerResultat("LFL_KC_SLY");
 esportVision.simulerResultat("VCT_VIT_M8");
 esportVision.simulerResultat("GTA_A_B");
+esportVision.simulerResultat("GTA_Ali_Bob");
