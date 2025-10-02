@@ -135,12 +135,10 @@ return this.matchs.find(match => match.id === id);
 
 simulerResultat(idMatch) {
   const match = this.getMatchById(idMatch);
-
   if (match.statut === 'Terminé') {
     console.log(`!! ${match.equipeA} vs ${match.equipeB} : Match terminé !!`);
     return;
   }
-
   // Nombre aléatoire entre 0 et 1
   const resultat = Math.random();
 
@@ -150,7 +148,6 @@ simulerResultat(idMatch) {
   } else {
     vainqueur = match.equipeB; // Sinon B
   }
-
   // Afficher résultat
   match.statut = 'Terminé';
   match.resultat = vainqueur;
@@ -158,6 +155,10 @@ simulerResultat(idMatch) {
   console.log(`> ${vainqueur} gagne !`);
 }
 
+getStatsEquipe(nomEquipe) {
+  // retourner un objet contenant le nombre de matchs joués par l'équipe
+  // son taux de victoire (basé sur les matchs simulés).
+}
 }
 
 /* ETAPE 4 -- TEST */
